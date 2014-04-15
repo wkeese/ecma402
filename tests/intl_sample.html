@@ -31,7 +31,7 @@
 				  baseUrl: '/ecma402',
 				  config: { 'locales' : /^(ar-(TN|SA)|en|es|hi|ja|de)$/ }
 			});
-			require([ "./Intl", "./IntlShim"], function(Intl,IntlShim) {
+			require(["./IntlShim"], function(Intl) {
 				var options = {
 					year : "numeric",
 					month : "short",
