@@ -1,8 +1,13 @@
-define(
-		[ "./Record", "./calendars", "./common", "./locales", "../requirejs-text/text!cldr/supplemental/currencyData.json",
-				"../requirejs-text/text!cldr/supplemental/timeData.json", "../requirejs-text/text!cldr/supplemental/likelySubtags.json",
-				"../requirejs-text/text!cldr/supplemental/numberingSystems.json" ],
-		function (Record, calendars, common, preloads, currencyData_json, timeData_json, likelySubtags_json,
+define([
+	"./Record",
+	"./calendars",
+	"./common",
+	"./locales!",
+	"requirejs-text/text!cldr/supplemental/currencyData.json",
+	"requirejs-text/text!cldr/supplemental/timeData.json",
+	"requirejs-text/text!cldr/supplemental/likelySubtags.json",
+	"requirejs-text/text!cldr/supplemental/numberingSystems.json"
+], function (Record, calendars, common, preloads, currencyData_json, timeData_json, likelySubtags_json,
 				numberingSystems_json) {
 			var Intl = {};
 			var currencyData = JSON.parse(currencyData_json);
