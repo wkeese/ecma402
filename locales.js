@@ -4,9 +4,8 @@
 
 define(["module", "require", "./common"], function (module, require, common) {
 
-
-	// Compute locales to pre-load, and start building data structure this plugin will return
-	// (a hash with a key for each pre-load locale).
+	// Compute locales to pre-load, and start building data structure this plugin will return:
+	// a hash with a key for each pre-load locale.
 	var localeData = {
 		root: {}
 	};
