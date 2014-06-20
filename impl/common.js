@@ -185,18 +185,19 @@ define(["./List", "./Record",
 			// ECMA 402 Section 9.2.1
 			CanonicalizeLocaleList : function (locales) {
 				if (locales === undefined) {
-					return new List();
+					return [];
 				}
 				if (locales === null) {
 					throw new TypeError("Locale list can not be null");
 				}
-				var seen = [];
 				if (typeof locales === "string") {
-					locales = new Array(locales);
+					locales = [locales];
 				}
-				var O = Object(locales);
-				for (var Pk in O) {
-					var kValue = O[Pk];
+				if (!locales.length || !locales.forEach) {
+					return [];
+				}
+				var seen = [];
+				locales.forEach(function (kValue) {
 					if (typeof kValue !== "string" && typeof kValue !== "object") {
 						throw new TypeError(kValue + " must be a string or an object.");
 					}
@@ -208,7 +209,7 @@ define(["./List", "./Record",
 					if (seen.indexOf(tag) < 0) {
 						seen.push(tag);
 					}
-				}
+				}, this);
 				return seen;
 			},
 
