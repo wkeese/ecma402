@@ -1,12 +1,12 @@
 /**
  * Commonly used routines throughout ECMA-402 package. Also referred to in the standard as "Abstract Operations"
  */
-define(["./List", "./Record",
+define(["./Record",
 		"requirejs-text/text!../cldr/config/availableLocales.json",
 		"requirejs-text/text!../cldr/supplemental/aliases.json",
 		"requirejs-text/text!../cldr/supplemental/localeAliases.json",
 		"requirejs-text/text!../cldr/supplemental/parentLocales.json" ],
-	function (List, Record, availableLocalesJson, aliasesJson, localeAliasesJson, parentLocalesJson) {
+	function (Record, availableLocalesJson, aliasesJson, localeAliasesJson, parentLocalesJson) {
 		var aliases = JSON.parse(aliasesJson).supplemental.metadata.alias;
 		var localeAliases = JSON.parse(localeAliasesJson).supplemental.metadata.alias;
 		var parentLocales = JSON.parse(parentLocalesJson).supplemental.parentLocales.parentLocale;
@@ -402,7 +402,7 @@ define(["./List", "./Record",
 			// ECMA 402 Section 9.2.6
 			LookupSupportedLocales : function (availableLocales, requestedLocales) {
 				var len = requestedLocales.length;
-				var subset = new List();
+				var subset = [];
 				var k = 0;
 				while (k < len) {
 					var locale = requestedLocales[k];
@@ -413,14 +413,13 @@ define(["./List", "./Record",
 					}
 					k++;
 				}
-				var subsetArray = subset.toArray();
-				return subsetArray;
+				return subset;
 			},
 
 			// ECMA 402 Section 9.2.7
 			BestFitSupportedLocales : function (availableLocales, requestedLocales) {
 				var len = requestedLocales.length;
-				var subset = new List();
+				var subset = [];
 				var k = 0;
 				while (k < len) {
 					var locale = requestedLocales[k];
@@ -431,8 +430,7 @@ define(["./List", "./Record",
 					}
 					k++;
 				}
-				var subsetArray = subset.toArray();
-				return subsetArray;
+				return subset;
 			},
 
 			// ECMA 402 Section 9.2.8
